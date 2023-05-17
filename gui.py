@@ -5,6 +5,7 @@ import customtkinter
 from PIL import ImageTk,Image
 from win32api import GetSystemMetrics
 import webbrowser
+import os
 import index
 
 customtkinter.set_appearance_mode("light")  
@@ -14,27 +15,27 @@ customtkinter.set_default_color_theme("blue")
 app = customtkinter.CTk()  
 app.geometry("620x520")
 app.title("musicRR")
-# icon
+#icon
 app.iconbitmap("img/icon.ico")
 
 def generateButton():
     if checkbox.get() == "on":
         print(int(entry2.get()))
-        index.main(float(entry1.get()),int(entry2.get()),int(entry3.get()),int(entry4.get()))
+        index.main(float(entry1.get()),int(entry2.get()),int(entry3.get()),int(entry4.get()),filename)
     if checkbox.get() == "off":
-        index.main(float(entry1.get()),0,int(entry3.get()),int(entry4.get()))
+        index.main(float(entry1.get()),0,int(entry3.get()),int(entry4.get()),filename)
 
 def openURL():
     webbrowser.open_new("https://github.com/msharr/Visualising-RR-Through-Music")
 
 def browseFiles():
-    filename = filedialog.askopenfilename(initialdir = "/",
+    global filename
+    filename = filedialog.askopenfilename(initialdir = os.getcwd(),
                                           title = "Select a File",
                                           filetypes = (("Text files",
                                                         "*.txt*"),
                                                        ("all files",
                                                         "*.*")))
-    print(filename)
 
 screen_width, screen_height = GetSystemMetrics(0), GetSystemMetrics(1)
 width, height = screen_width, screen_height
