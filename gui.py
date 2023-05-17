@@ -4,8 +4,8 @@ from tkinter import filedialog
 import customtkinter
 from PIL import ImageTk,Image
 from win32api import GetSystemMetrics
+import webbrowser
 import index
-import helpGUI
 
 customtkinter.set_appearance_mode("light")  
 customtkinter.set_default_color_theme("blue")  
@@ -24,8 +24,8 @@ def generateButton():
     if checkbox.get() == "off":
         index.main(float(entry1.get()),0,int(entry3.get()),int(entry4.get()))
 
-def helpPage():
-    newWindow = customtkinter.CTk()  
+def openURL():
+    webbrowser.open_new("https://github.com/msharr/Visualising-RR-Through-Music")
 
 def browseFiles():
     filename = filedialog.askopenfilename(initialdir = "/",
@@ -87,7 +87,7 @@ button2.place(x=50, y=295)
 
 # button 2
 img3 = customtkinter.CTkImage(Image.open("img/file.jpg").resize((20,20), Image.Resampling.LANCZOS))
-button3 = customtkinter.CTkButton(master=frame, image=img3, text="Help", width=100, height=20, compound="left", fg_color="white", text_color="black", hover_color="#AFAFAF", command = helpPage)
+button3 = customtkinter.CTkButton(master=frame, image=img3, text="Help", width=100, height=20, compound="left", fg_color="white", text_color="black", hover_color="#AFAFAF", command = openURL)
 button3.place(x=170, y=295)
 
 # loop
