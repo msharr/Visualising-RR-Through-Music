@@ -1,4 +1,6 @@
 /.vscode
 /__pycache__
-/Patients
-/Output
+/Patients/*
+/Output/*
+!/Patients/example.txt
+!/Output/example.pdf
