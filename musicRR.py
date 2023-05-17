@@ -20,56 +20,31 @@ def calculate_ratio(data, start_time):
     return ratio
 
 def regions(ratio):
-    a = 0
-    b =0
-    c=0
-    d=0
-    e=0
-    f1=0
-    g=0
-    h=0
-    j=0
-    k=0
-    l=0
-    m=0
     for i in range(len(ratio)-1):
         if 0.35<=ratio[i].notes<0.45:
             ratio[i].notes = 0.4
-            a = a +1
         elif 0.45<=ratio[i].notes<0.55:
             ratio[i].notes = 0.5
-            b = b +1
         elif 0.55<=ratio[i].notes<0.675:
             ratio[i].notes = 0.66
-            c = c+1
         elif 0.675<=ratio[i].notes<0.775:
             ratio[i].notes = 0.75
-            d = d+1
         elif 0.775<=ratio[i].notes<0.9:
             ratio[i].notes = 0.8
-            e = e+1
         elif 0.9<=ratio[i].notes<1.125:
             ratio[i].notes = 1
-            f1=f1+1
         elif 1.125<=ratio[i].notes<1.29:
             ratio[i].notes = 1.25
-            g=g+1
         elif 1.29<=ratio[i].notes<1.415:
             ratio[i].notes = 1.33
-            h=h+1
         elif 1.415<=ratio[i].notes<1.625:
             ratio[i].notes = 1.5
-            j = j+1
         elif 1.625<=ratio[i].notes<1.875:
             ratio[i].notes = 1.75
-            k = k+1
         elif 1.875<=ratio[i].notes<2.25:
             ratio[i].notes = 2
-            l = l+1
         elif 2.25<=ratio[i].notes:
             ratio[i].notes = 2.5
-            m = m+1
-    print(a,b,c,d,e,f1,g,h,j,k,l,m)
     return ratio
 
 def main(patient_file, start_time):
