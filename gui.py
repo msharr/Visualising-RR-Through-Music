@@ -4,8 +4,11 @@ from tkinter import filedialog
 import customtkinter
 from PIL import ImageTk,Image
 from win32api import GetSystemMetrics
+import webbrowser
+import datetime
+import time
+import os
 import index
-import helpGUI
 
 customtkinter.set_appearance_mode("light")  
 customtkinter.set_default_color_theme("blue")  
@@ -14,27 +17,37 @@ customtkinter.set_default_color_theme("blue")
 app = customtkinter.CTk()  
 app.geometry("620x520")
 app.title("musicRR")
-# icon
+#icon
 app.iconbitmap("img/icon.ico")
 
+def getDate():
+    print("Up")
+
 def generateButton():
+    time = str(entryTime.get())
+    time = time.split(":")
+    date = str(entryDate.get())
+    date = date.split("/")
+    # if 3<date[1]<11
+    d = datetime.datetime(int(date[2]),int(date[1]),int(date[0]),int(time[0]),int(time[1]), tzinfo=datetime.timezone.utc)
+    start_date = d.timestamp()
     if checkbox.get() == "on":
         print(int(entry2.get()))
-        index.main(float(entry1.get()),int(entry2.get()),int(entry3.get()),int(entry4.get()))
+        index.main(float(entry1.get()),int(entry2.get()),int(entry3.get()),int(entry4.get()),filename,start_date)
     if checkbox.get() == "off":
-        index.main(float(entry1.get()),0,int(entry3.get()),int(entry4.get()))
+        index.main(float(entry1.get()),0,int(entry3.get()),int(entry4.get()),filename,start_date)
 
-def helpPage():
-    newWindow = customtkinter.CTk()  
+def openURL():
+    webbrowser.open_new("https://github.com/msharr/Visualising-RR-Through-Music")
 
 def browseFiles():
-    filename = filedialog.askopenfilename(initialdir = "/",
+    global filename
+    filename = filedialog.askopenfilename(initialdir = os.getcwd(),
                                           title = "Select a File",
                                           filetypes = (("Text files",
                                                         "*.txt*"),
                                                        ("all files",
                                                         "*.*")))
-    print(filename)
 
 screen_width, screen_height = GetSystemMetrics(0), GetSystemMetrics(1)
 width, height = screen_width, screen_height
@@ -52,8 +65,10 @@ l2=customtkinter.CTkLabel(master=frame, text="musicRR",font=("Century Gothic",20
 l2.place(x=115, y=35)
 
 # input date
-entry0=customtkinter.CTkEntry(master=frame, width=220, placeholder_text="Start Time")
-entry0.place(x=50, y=75)
+entryTime=customtkinter.CTkEntry(master=frame, width=109, placeholder_text="Time (e.g 17:15)")
+entryTime.place(x=50, y=75)
+entryDate=customtkinter.CTkEntry(master=frame, width=110, placeholder_text="dd/mm/yyyy")
+entryDate.place(x=161, y=75)
 
 # input 1
 entry1=customtkinter.CTkEntry(master=frame, width=220, placeholder_text="Tuning level")
@@ -62,7 +77,6 @@ entry1.place(x=50, y=110)
 # input 2
 entry2=customtkinter.CTkEntry(master=frame, width=220, placeholder_text="Exclusion duration")
 entry2.place(x=50, y=145)
-
 
 checkbox = customtkinter.CTkCheckBox(master=frame,width=0, height =0,  text="", 
                                       onvalue="on", offvalue="off")
@@ -87,7 +101,7 @@ button2.place(x=50, y=295)
 
 # button 2
 img3 = customtkinter.CTkImage(Image.open("img/file.jpg").resize((20,20), Image.Resampling.LANCZOS))
-button3 = customtkinter.CTkButton(master=frame, image=img3, text="Help", width=100, height=20, compound="left", fg_color="white", text_color="black", hover_color="#AFAFAF", command = helpPage)
+button3 = customtkinter.CTkButton(master=frame, image=img3, text="Help", width=100, height=20, compound="left", fg_color="white", text_color="black", hover_color="#AFAFAF", command = openURL)
 button3.place(x=170, y=295)
 
 # loop
