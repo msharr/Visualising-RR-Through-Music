@@ -38,7 +38,7 @@ def generateButton():
         index.main(float(entry1.get()),0,int(entry3.get()),int(entry4.get()),filename,start_date)
 
 def openURL():
-    webbrowser.open_new("https://github.com/msharr/Visualising-RR-Through-Music")
+    webbrowser.open_new("https://github.com/msharr/Visualising-RR-Through-Music#readme")
 
 def browseFiles():
     global filename
