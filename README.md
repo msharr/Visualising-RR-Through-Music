@@ -30,7 +30,7 @@ or
 pip3 install -r requirements.txt
 ```
 
-Once the dependencies have been installed, the program is ready to run. Close the command prompt and navigate to the project folder. Run `GUI.py`
+Once the dependencies have been installed, the program is ready to run. Close the command prompt and navigate to the project folder. Open `GUI.py` using the IDLE (Python IDLE) and run the module.
 
 Enter the parameters on the GUI:
 
