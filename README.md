@@ -2,15 +2,37 @@
 
 An alternative representation of RR peak data in terms of musical notation.
 
-## Prerequisite
+## Prerequisites
+
+Latest version of Python.
 
 Download Lilypond from https://lilypond.org/download.html and make sure that the default program for running `.ly` files is set to Lilypond.
 
-## Running the program
+### Running the program
 
-Once the program has been installed, run `gui.py`.
+Download the files in the repository and make sure the folder is unzipped.
 
-Enter the parameters:
+Open the command prompt app and navigate to where the program files have been downloaded. By default this should be:
+
+```bash
+cd downloads
+cd Visualising-RR-Through-Music-master
+```
+
+Next install the dependencies by running in the terminal:
+
+```bash
+pip install -r requirements.txt
+```
+or
+
+```bash
+pip3 install -r requirements.txt
+```
+
+Once the dependencies have been installed, the program is ready to run. Close the command prompt and navigate to the project folder. Run `GUI.py`
+
+Enter the parameters on the GUI:
 
 `Time` - Format is HH:mm (24 hour time)
 
@@ -21,6 +43,8 @@ Enter the parameters:
 `Exclusion Duration` - Excludes bars below value in seconds. Off by default as useful information may be excluded - use with caution.
 
 `Min Tempo` & `Max Tempo` - Min Tempo < x < Max Tempo, heart rates (BPMs) below min tempo and above max tempo are excluded.
+
+Next you must select the data by clicking the `Patients` button. Please select an appropriate `.txt` file, example shown below.
 
 ## Data format
 
